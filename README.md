@@ -1,4 +1,4 @@
-# sigmadelta
+# Sigma delta neural networks
 Repository for the paper "An ultra-low power sigma-delta neuron circuit
 
 A python notebook demonstrating the use of the Spiker framework that allows the user to run transient simulation of a spiking neural network.
