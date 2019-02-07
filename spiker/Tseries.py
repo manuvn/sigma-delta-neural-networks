@@ -73,7 +73,7 @@ class Tseries(object):
         plt.plot(self.time[istart:istop], self.value[istart:istop],label=label, color=color)
         plt.grid(True)
         if xlabel:
-            plt.xlabel(r'$Time$')
+            plt.xlabel(r'$Time$ (in seconds)')
         if ylabel:
             plt.ylabel(r'$Amplitude$')
         plt.legend()
