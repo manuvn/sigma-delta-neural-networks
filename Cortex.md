@@ -23,9 +23,9 @@ A high-level back of the envelope estimate of the cost of performing the computa
 
 The compute cost of 50 node RNN model is 20 uW approximately.
 
-## Memory fetch cost
+## Memory cost
 ---
-- Assuming 16 bit weights- And SRAM storage.
+- Assuming 16 bit weights and SRAM.
 - Minimal amount of memory reads of weights = 30*(50*50 + 50 + 50) = 78000 * 16 bits.
 - Write back of states = 78000 * 16 bits
 - Roughly 2 pJ/bit for read gives us approx 4 uW memory access cost.
