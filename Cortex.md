@@ -31,6 +31,7 @@ The compute cost of 50 node RNN model is 20 uW approximately.
 - Roughly 2 pJ/bit average for read+write gives us approx 4 uW memory access cost.
 (http://www.pitt.edu/~juy9/papers/ping_iccad_318.pdf)
 - With DRAM, it maybe 6-25pJ/bit, increasing energy cost to 15uW-60uW.
+https://www.micron.com/support/tools-and-utilities/power-calc
 
 ## Other energy cost
 ---
