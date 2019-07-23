@@ -28,8 +28,12 @@ The compute cost of 50 node RNN model is 20 uW approximately.
 - Assuming 16 bit weights and SRAM.
 - Minimal amount of memory reads of weights = 30*(50*50 + 50 + 50) = 78000 * 16 bits.
 - Write back of states = 78000 * 16 bits
-- Roughly 2 pJ/bit for read gives us approx 4 uW memory access cost.
+- Roughly 2 pJ/bit average for read+write gives us approx 4 uW memory access cost.
 (http://www.pitt.edu/~juy9/papers/ping_iccad_318.pdf)
+- With DRAM, it maybe 6-25pJ/bit, increasing energy cost to 12-48uW.
 
+## Other energy cost
+---
+- ADC - 12-bit resolution at 2*B rate ~ 30*3pJ = 90 pJ ~ 90 pW
 
-Total energy cost ~ 24 uW.
+## Total energy cost 20uW + (~4uW (SRAM)|~12-48uW (DRAM)) =24-68uW
