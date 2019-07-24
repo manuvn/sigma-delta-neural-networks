@@ -65,18 +65,19 @@ class Tseries(object):
         return Tseries(self.value[istart:istop],self.time[istart:istop])
 
     
-    def plot(self,tstart=0,tstop=None,label="", xlabeltxt=r'$Time$ (in seconds)', ylabeltxt=r"Amplitude", color=None, xlabel=True, ylabel=True, alpha=1):
+    def plot(self,tstart=0,tstop=None,label="", xlabeltxt=r'$Time$ (in seconds)', ylabeltxt=r"Amplitude", color=None, xlabel=True, ylabel=True, alpha=1, legend=True, linestyle='-'):
         if tstop == None:
             tstop = self.end_time()
         istart = self.find_index(tstart)
         istop  = self.find_index(tstop)
-        plt.plot(self.time[istart:istop], self.value[istart:istop],label=label, color=color, alpha=alpha)
+        plt.plot(self.time[istart:istop], self.value[istart:istop], linestyle=linestyle, label=label, color=color, alpha=alpha)
         plt.grid(True)
         if xlabel:
             plt.xlabel(xlabeltxt)
         if ylabel:
             plt.ylabel(ylabeltxt)
-        plt.legend()
+        if legend:
+            plt.legend()
         return
     
     def set_time(self,t=0):

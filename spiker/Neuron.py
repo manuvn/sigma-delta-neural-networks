@@ -66,6 +66,7 @@ class Neuron(Cells):
         self.mode   = mode
         self.timer  = 0
         self.refr   = refr/self.Ts # refr is in seconds
+        self.spike_count = np.zeros(n)
 
     def reset(self, nsel=None):
         if nsel == None:
@@ -75,7 +76,8 @@ class Neuron(Cells):
         self.ipsyn.reset(nsel)
         self.fbsyn.reset(nsel) 
         self.esyn.reset(nsel)        
-        
+        self.spike_count = 0
+                
     def reset(self, nsel=None):
         if nsel.any() == None:
             self.states = np.zeros(self.ncells)
@@ -107,8 +109,11 @@ class Neuron(Cells):
         self.reset(self.states)
         
         # Check for spiking condition
+        # condition to implement spike width implemented in fbsyn
         if self.mode == 'sd': # sigma delta modulation
             self.states = (e > self.thresh)
+            self.spike_count += (self.fbsyn.oncount <= 0)*self.states
+
         elif self.mode == 'dm': # delta modulation
             self.states = (i > (s + self.thresh))
         else: # integrate and fire mode
@@ -118,6 +123,7 @@ class Neuron(Cells):
             else:
                 self.states = np.zeros(self.states.shape,dtype=np.bool_)
                 self.timer = self.timer - 1
+
         # Update local storage
         self.irecon = self.ipsyn.states
         self.frecon = self.fbsyn.states
@@ -141,3 +147,5 @@ class Neuron(Cells):
         print("------------------\n")
         print("Error DPI properties\n")
         self.esyn.print_props()
+        print("------------------\n")
+        print("Number of spikes = {}\n".self.spike_count)
