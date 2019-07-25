@@ -40,7 +40,9 @@ The compute cost of 50 node RNN model is 20 uW approximately.
 ---
 - ADC - 12-bit resolution at 2*B rate ~ 30*3pJ = 90 pJ ~ 90 pW
 
-## Total energy cost 20uW + 15-60uW (DRAM) =35-80uW
+---
+Total energy cost 20uW + 15-60uW (DRAM) =35-80uW
+---
 
 ## Compute cost growth 
 ### For Cortex = O(n^2)
