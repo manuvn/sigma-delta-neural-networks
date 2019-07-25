@@ -148,4 +148,5 @@ class Neuron(Cells):
         print("Error DPI properties\n")
         self.esyn.print_props()
         print("------------------\n")
-        print("Number of spikes = {}\n".self.spike_count)
+        print("Number of spikes = {}\n".format(np.sum(self.spike_count)))
+        print("------------------\n")
