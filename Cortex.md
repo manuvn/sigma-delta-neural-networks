@@ -22,7 +22,6 @@ https://medium.com/mythic-ai/mythic-hot-chips-2018-637dfb9e38b7
 
 ## Compute cost
 ---
-- Number of clock cycles for computation of a 128 point FFT ~25000
 - Compute operations for an 50 node RNN  
 -- 1 input layer - 2 multiply and 1 addition.
 -- Input to hidden = 50 multiply + 49 add.
@@ -44,12 +43,14 @@ The compute cost of 50 node RNN model is 20 uW approximately.
 ## Total energy cost 20uW + 15-60uW (DRAM) =35-80uW
 
 ## Compute cost growth 
-- For Cortex = O(n^2)
-- For a in-memory neuromorphic system, 
--- Energy cost grows as O(n) for neurons. 
--- For memory.
---- Current model analog memory access is very cheap. 
---- A single "bit" read with a microsecond pulse costs = 1e-9 * 1e-6 ~ 1fJ.
---- Matrix multiplication cost is also covered by the memory read cost.
---- Therefore, there is a lot of headroom.
+### For Cortex = O(n^2)
+### For a in-memory neuromorphic system, 
+- Energy cost grows as O(n) for neurons. 
+- For memory.
+-- Current model analog memory access is very cheap. 
+-- A single "bit" read with a 100 ns pulse costs = 1e-9 * 1e-7 ~ 0.1 fJ.
+-- Matrix multiplication cost is also covered by the memory read cost.
+-- Therefore, cost of computation in case of neuromorphic memory is also O(n^2), but scaled by a factor that is about 10000.
+-- Moreover, the matrix multiplication cost is also eliminated.
+-- Per spike cost for the neuron is 10 pJ. Lowering this is key.
 
