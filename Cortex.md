@@ -48,11 +48,16 @@ The compute cost of 50 node RNN model is 20 uW approximately.
 - Energy cost grows as O(n) for neurons. 
 - For memory.
   - Current model analog memory access is very cheap. 
-  - A single "bit" read with a 100 ns pulse costs = 1e-9 * 1e-7 ~ 0.1 fJ.
+  - A single "bit" read with a 100 ns pulse costs = 1e-9 * 1e-7 ~ 0.1 fJ, because there is no sense amplifier.
+      - This limits the maximum speed of operation in the circuit but that is why we save energy.
   - Matrix multiplication cost is also covered by the memory read cost.
-  - Therefore, cost of computation in case of neuromorphic memory is also O(n^2), but scaled by a factor that is about 10000.
-  - Moreover, the matrix multiplication cost is also eliminated.
+  - Therefore, cost of computation in case of neuromorphic memory is also O(n^2), but scaled down by a factor that is about 10000.
+  - Matrix multiplication cost is also eliminated.
+  - Therefore, Main differentiators are 
+      - compute cost changes from O(n^2) to O(n).
+      - Memory access cost per bit is so much lower than 
   - Per spike cost for the neuron is 10 pJ in the current 180 nm, 1.8V implementation. How to lower it further?
       - Technology scaling
       - Cut Vdd to 1V or lower.
+      - Integrate more digital building blocks.
 
