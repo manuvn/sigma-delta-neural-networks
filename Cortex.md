@@ -25,7 +25,7 @@ https://medium.com/mythic-ai/mythic-hot-chips-2018-637dfb9e38b7
 - Compute operations for an 50 node RNN  
   - 1 input layer - 2 multiply and 1 addition.
   - Input to hidden = 50 multiply + 49 add.
-  - 50 node hidden layer - 50*50 multiply - 50*49 add.
+  - 50 node hidden layer - 50 x 50 multiplies - 50 x 49 adds.
   - 1 output node - 50 multiply + 49 add
   - Roughly - 2552 multiply and 2500 add
 - Assuming 26 clocks per multiply and 1 clock per add.
