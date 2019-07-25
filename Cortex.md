@@ -57,7 +57,7 @@ Total energy cost 20uW + 15-60uW (DRAM) =35-80uW
   - Matrix multiplication cost is also eliminated.
   - Therefore, Main differentiators are 
       - compute cost changes from O(n^2) to O(n).
-      - Memory access cost per bit is so much lower than 
+      - Memory access cost per bit is so much lower than with standard memory.
   - Per spike cost for the neuron is 10 pJ in the current 180 nm, 1.8V implementation. How to lower it further?
       - Technology scaling
       - Cut Vdd to 1V or lower.
