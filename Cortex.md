@@ -16,9 +16,8 @@ A high-level back of the envelope estimate of the cost of performing the computa
 (http://www.pitt.edu/~juy9/papers/ping_iccad_318.pdf)
 - With DRAM, it maybe 6-25pJ/bit, increasing energy cost to 15uW-60uW.
 https://www.micron.com/support/tools-and-utilities/power-calc
-
-Assuming 60 clock of memory access time and 128 bit memory line, clocks required = 78000 * 16 * 2 * 60/ 128 = 19500 * 60 = 1,170,000
-https://medium.com/mythic-ai/mythic-hot-chips-2018-637dfb9e38b7
+- Assuming 60 clock of DRAM memory access time and 128 bit memory line, clocks required = 78000 * 16 * 2 * 60/ 128 = 19500 * 60 = 1,170,000
+- Interesting blog on memory cost: https://medium.com/mythic-ai/mythic-hot-chips-2018-637dfb9e38b7
 
 ## Compute cost
 ---
