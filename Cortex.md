@@ -1,4 +1,4 @@
-# Cortex M4 power consumption estimate
+# Cortex M4 vs sigma delta NN power comparison (back of the envelope estimate)
 
 A high-level back of the envelope estimate of the cost of performing the computation modelled here on a Cortex processor with super-highly optimized code. In reality the results are likely to be higher by a factor.
 
