@@ -19,7 +19,7 @@ def test_1D_nofilt():
     # some random input
     ip = np.random.rand(ip_dim,seq_len)
     ip += 1
-    states = net.ann_forward(ip)
+    states = net.rnn_forward(ip)
     for s in states:
         if np.sum((s != ip) > 0):
             print('Error')

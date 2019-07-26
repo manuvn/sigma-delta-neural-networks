@@ -98,7 +98,7 @@ class rnn(object):
         weights[-1] = np.random.rand(self.ounits,self.hunits)-0.5
         return weights
 
-    def ann_forward(self, ip, mode='ann'):
+    def rnn_forward(self, ip, mode='ann'):
         """
         input shape = dim, length
         weights = weights of the layers of rnn
@@ -176,7 +176,7 @@ if __name__ == '__main__':
 
     print('ANN')
     print('='*89)
-    ann_states = net.ann_forward(ip, mode='ann')
+    ann_states = net.rnn_forward(ip, mode='ann')
     for s in ann_states:
         print(s, '\n')
 
