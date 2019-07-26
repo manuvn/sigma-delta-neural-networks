@@ -42,12 +42,13 @@ class rnn(object):
         self.neurons = self.create_neurons()
         self.filter_factor = self.compute_ann_retention_ratio()
 
-    def train_last_layer(self, tgt, y, ro_state):
+    def train_last_layer(self, tgt, ro_state):
         # we'll disregard the first few states and solve for Wout
         transient = 0
         Wout = np.dot(tgt[transient:], 
                     np.linalg.pinv(ro_state[:, transient:]))
-        return Wout
+        self.weights[-1] = Wout
+        return
 
     def compute_ann_retention_ratio(self):
         Cmem  = self.nparams['fbCmem']
