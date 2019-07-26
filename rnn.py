@@ -42,6 +42,13 @@ class rnn(object):
         self.neurons = self.create_neurons()
         self.filter_factor = self.compute_ann_retention_ratio()
 
+    def train_last_layer(self, tgt, y, ro_state):
+        # we'll disregard the first few states and solve for Wout
+        transient = 0
+        Wout = np.dot(tgt[transient:], 
+                    np.linalg.pinv(ro_state[:, transient:]))
+        return Wout
+
     def compute_ann_retention_ratio(self):
         Cmem  = self.nparams['fbCmem']
         Kappa = self.nparams['Kappa']
@@ -109,6 +116,10 @@ class rnn(object):
             state = np.zeros((state_dim, ip_len))
             states += [state]
 
+        prev_states = []
+        for idx in range(self.nrlayers):
+            prev_states += [None]
+
         # rnn forward pass
         for t_idx in range(ip_len):
             layer_ip = ip[:, t_idx]
@@ -119,8 +130,8 @@ class rnn(object):
                 fwd_idx = 2*idx+2
                 rec_idx = 2*idx+1
                 # First the recurrent calculation
-                layer_op   = self.rec_layer(rec_idx, t_idx, layer_op, prev_state, mode)
-                prev_state = layer_op
+                layer_op   = self.rec_layer(rec_idx, t_idx, layer_op, prev_states[idx], mode)
+                prev_states[idx] = layer_op
                 states[rec_idx][:, t_idx] = layer_op
 
                 # Then, the forward pass
