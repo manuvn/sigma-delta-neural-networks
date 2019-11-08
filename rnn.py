@@ -37,6 +37,8 @@ class rnn(object):
         for p in nparams.keys():
             if p in self.nparams.keys():
                 self.nparams[p] = nparams[p]
+            elif p == 'Ts_ann':
+                self.Ts_ann = nparams[p]
             else:
                 print('Incorrect key {}'.format(p))
         self.neurons = self.create_neurons()
@@ -57,7 +59,7 @@ class rnn(object):
         Itau  = self.nparams['fbItau']
         Ut    = 1.38064852e-23 * Temp/1.60217662e-19 # kt/q
         tau   = Cmem*Ut/(Kappa * Itau)
-        a =  1 - np.exp(-self.nparams['Ts']/tau)
+        a =  1 - np.exp(-self.Ts_ann/tau)
         self.tau = tau
         return a
 
